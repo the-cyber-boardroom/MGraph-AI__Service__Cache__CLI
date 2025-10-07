@@ -7,14 +7,14 @@ from starlette.testclient                                             import Tes
 from osbot_fast_api_serverless.utils.testing.skip_tests               import skip__if_not__in_github_actions
 from mgraph_ai_service_cache__cli.fast_api.Service__Fast_API                import Service__Fast_API
 from mgraph_ai_service_cache__cli.fast_api.routes.Routes__Info              import ROUTES_PATHS__INFO, ROUTES_INFO__HEALTH__RETURN_VALUE
-from tests.unit.Service__Fast_API__Test_Objs                          import setup__service_fast_api_test_objs, Service__Fast_API__Test_Objs, TEST_API_KEY__NAME
+from tests.unit.Service__Cache__Test_Objs                             import setup__service__cache__test_objs, Service__Cache__Test_Objs, TEST_API_KEY__NAME
 
 
 class test_Service__Fast_API__client(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        with setup__service_fast_api_test_objs() as _:
+        with setup__service__cache__test_objs() as _:
             cls.service_fast_api_test_objs         = _
             cls.fast_api                           = cls.service_fast_api_test_objs.fast_api
             cls.client                             = cls.service_fast_api_test_objs.fast_api__client
@@ -22,7 +22,7 @@ class test_Service__Fast_API__client(TestCase):
 
     def test__init__(self):
         with self.service_fast_api_test_objs as _:
-            assert type(_)                  is Service__Fast_API__Test_Objs
+            assert type(_) is Service__Cache__Test_Objs
             assert type(_.fast_api        ) is Service__Fast_API
             assert type(_.fast_api__app   ) is FastAPI
             assert type(_.fast_api__client) is TestClient
